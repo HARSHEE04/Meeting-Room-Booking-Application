@@ -19,6 +19,9 @@ namespace Assignment3.BusinessLogic
     //add XML comments in the end
 
 
+    //stilll need to add the methods needed to make this class work properly
+
+
     //Shows the possible meeting venues
     internal class MeetingRoom
     {
@@ -51,7 +54,7 @@ namespace Assignment3.BusinessLogic
             get { return _seatingCapacity; }
             set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     throw new Exception("The seating capacity needs to be greater than 0");
                 }
@@ -96,7 +99,7 @@ namespace Assignment3.BusinessLogic
             LayoutType= layoutType;
             RoomImageFileName= roomImageFileName;
         }
+        #endregion
 
-        
     }
 }
