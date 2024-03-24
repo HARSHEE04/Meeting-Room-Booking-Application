@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.ViewRequestsPage"
              Title="ViewRequestsPage">
-    <VerticalStackLayout>
+    <Grid
+        RowDefinitions="*,4*,*">
+
+
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            Grid.Row="0"
+            Text="Showing Reservation for Room{BINDING THE NAME OF CHOSEN ROOM}"/>
+        <ListView
+            Grid.Row="1">
+        </ListView>
+
+        <Button
+   Grid.Row="2" 
+   Text="Back to Rooms"
+   Clicked="OnBackToRooms"
+   VerticalOptions="Center"
+      Margin="5"
+   HorizontalOptions="Start"
+   BackgroundColor="Purple">
+        </Button>
+    </Grid>
 </ContentPage>

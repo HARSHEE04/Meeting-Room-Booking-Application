@@ -6,4 +6,9 @@ public partial class ViewRequestsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void OnBackToRooms(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new PickRoomPage());
+    }
 }

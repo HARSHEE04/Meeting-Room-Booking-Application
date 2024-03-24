@@ -27,7 +27,7 @@ public partial class PickRoomPage : ContentPage
     private void OnViewRequest(object sender, EventArgs e)
     {
         Navigation.PushAsync(new ViewRequestsPage());
-        //just navigates to the requests page
+        //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
     }
 }
 
