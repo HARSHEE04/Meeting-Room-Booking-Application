@@ -57,10 +57,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\auditoriumm.png" />
 	  <None Remove="Resources\Images\auditorium_icon.svg" />
 	  <None Remove="Resources\Images\banquet_icon.svg" />
+	  <None Remove="Resources\Images\classroom.png" />
 	  <None Remove="Resources\Images\classroom_icon.svg" />
+	  <None Remove="Resources\Images\hollowsquare.png" />
 	  <None Remove="Resources\Images\hollowsquare_icon.svg" />
+	  <None Remove="Resources\Images\ushape.png" />
 	  <None Remove="Resources\Images\ushape_icon.svg" />
 	</ItemGroup>
 

@@ -31,20 +31,56 @@
         </Button>
 
         <ListView
-            Grid.Row="2" Grid.Column="0"
+            Grid.Row="1" Grid.Column="0"
             x:Name="RoomTypesListview">
             
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid
+                      MaximumHeightRequest="200"
+                     BackgroundColor="Aquamarine"
                     RowDefinitions="*,*"
-                    ColumnDefinitions="*, *">
+                    ColumnDefinitions="*, *,*">
+                            <Image
+                                Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                VerticalOptions="Center"
+                                Source="{Binding Path= RoomTypeIcon}" 
+                                HeightRequest="100 "
+                                WidthRequest="100">
+                            </Image>
+                            <Label
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    Grid.Row="0"  Grid.Column="1"
+                                    Text="{Binding Path= RoomNumber}">
+                                </Label>
+                                <Label
+                                    TextColor="Black"
+                                     VerticalOptions="Center"
+                                    Grid.Row="1"  Grid.Column="1"
+                                    Text="{Binding Path= LayoutType}">
+                                </Label>
+                            <Label
+                                    TextColor="Black"
+                                   VerticalOptions="Center"
+                                    Grid.Row="1"  Grid.Column="2"
+                                    Text="{Binding Path =SeatingCapacity}">
+                            </Label>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Image
+            Grid.Row="1"  Grid.Column="2"
+            Source="ushape.png"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            x:Name="RealRoomImage">
+
+        </Image>
 
     </Grid>
     

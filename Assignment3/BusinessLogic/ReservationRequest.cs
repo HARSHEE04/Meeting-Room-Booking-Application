@@ -134,10 +134,6 @@ namespace Assignment3.BusinessLogic
             Participants=participants;
             Status = RequestStatus.Pending;
             RequestId = _requestID;
-            _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare_icon.png"));
-            _meetingRooms.Add(new MeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape_icon.png"));
-            _meetingRooms.Add(new MeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom_icon.png"));
-            _meetingRooms.Add(new MeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium_icon.png"));
         }
 
     }
