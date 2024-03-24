@@ -6,4 +6,14 @@ public partial class PickRoomPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void OnAddRequest(object sender, EventArgs e)
+    {
+
+    }
+
+    private void OnViewRequest(object sender, EventArgs e)
+    {
+
+    }
 }

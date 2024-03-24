@@ -8,10 +8,10 @@ namespace Assignment3.BusinessLogic
 {
     enum RoomLayoutType
     {
-        HollowSquare,
-        UShape,
-        Classroom,
-        Auditorium
+        hollowsquare,
+        ushape,
+        classroom,
+        auditorium
     }
 
     //include properties for all field variables
@@ -83,10 +83,11 @@ namespace Assignment3.BusinessLogic
             }
         }
 
+        //before you try to fetch image, search the images and see if the image is there, use try catch block
         //RoomTypeIcon, this is a computed property 
         public string RoomTypeIcon
         {
-            get { return $"{_layoutType}_icon.png"; }
+            get { return $"{_layoutType}_icon.png"; } //check to see if methods are returned? try returning codes
         }
 
         #endregion

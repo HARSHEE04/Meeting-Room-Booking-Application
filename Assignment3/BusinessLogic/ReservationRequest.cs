@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Assignment3.BusinessLogic
 {
     //the methods required to make this class work are still needed, the property and constructor is made
+    //in UI, allow change of status, populate enum on UI using something and we need setter for this
     enum RequestStatus
     {
         Accepted,
@@ -16,6 +17,7 @@ namespace Assignment3.BusinessLogic
     }
     internal class ReservationRequest
     {
+        private int _requestID;
         private string _requestedBy;
         private string _description;
         private DateTime _startDateTime;
@@ -25,8 +27,16 @@ namespace Assignment3.BusinessLogic
         private List<MeetingRoom> _meetingRooms;
 
 
+        //RequestID property
 
-        //still have to do  RequestID (int, auto generated in sequence starting at 1)
+        public int RequestId
+        {
+            get { return _requestID; }
+            init
+            {
+                _requestID = value + 1;
+            }
+        }
 
         //RequestedBy property
         public string RequestedBy
@@ -115,7 +125,7 @@ namespace Assignment3.BusinessLogic
             set { _meetingRooms = value; }
         }
 
-        public ReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants) 
+        public ReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants) //need to see if we need it for bonus, call setter 
         {
             RequestedBy=requestedBy;
             Description=description;
@@ -123,6 +133,11 @@ namespace Assignment3.BusinessLogic
             EndDateTime=endDateTime;
             Participants=participants;
             Status = RequestStatus.Pending;
+            RequestId = _requestID;
+            _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare_icon.png"));
+            _meetingRooms.Add(new MeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape_icon.png"));
+            _meetingRooms.Add(new MeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom_icon.png"));
+            _meetingRooms.Add(new MeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium_icon.png"));
         }
 
     }
