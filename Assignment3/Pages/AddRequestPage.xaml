@@ -31,7 +31,7 @@
         <Editor
             Grid.Row="5"  Grid.Column="1" Grid.ColumnSpan="2"
             Margin="0,0,15,0"
-            Placeholder="Room is required to disucss 2024/2025 team agenda"
+            Placeholder="Meeting of _______ Please just fill in the blank in this area"
             x:Name="Description">
         </Editor>
 

@@ -20,7 +20,7 @@
    Clicked="OnBackToRooms"
    VerticalOptions="Center"
       Margin="5"
-   HorizontalOptions="Start"
+   HorizontalOptions="Center"
    BackgroundColor="Purple">
         </Button>
     </Grid>

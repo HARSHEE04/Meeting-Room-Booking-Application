@@ -9,6 +9,10 @@ namespace Assignment3.BusinessLogic
 {
     //the methods required to make this class work are still needed, the property and constructor is made
     //in UI, allow change of status, populate enum on UI using something and we need setter for this
+
+    //what methods would be required for this Reservation Request class?
+   /*Overide to string method
+    */
     enum RequestStatus
     {
         Accepted,
@@ -136,6 +140,11 @@ namespace Assignment3.BusinessLogic
             RequestId = _requestID;
         }
 
+        public override string ToString()
+        {
+            return $" Requested by {RequestedBy} for Meeting of {Description} \n " +
+                $"Scheduled on {StartDateTime.Date.ToString()} from {StartDateTime.ToString()} to {EndDateTime.ToString()}.\n Status {Status}" ;
+        }
     }
 
 }

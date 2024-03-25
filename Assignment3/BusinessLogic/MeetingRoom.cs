@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Assignment3.BusinessLogic
 {
+    //what methods would be required for this Meeting Room class?
+    /*This class creates the objects of each individual meeting room eg A012 etc
+     * This would be similar to the products class which had the construcor, properties but overide tostring method would be in 
+     * requests class since requests are displayed on the View Reservation Requests page
+     */
     enum RoomLayoutType
     {
         hollowsquare,
@@ -101,6 +106,7 @@ namespace Assignment3.BusinessLogic
             RoomImageFileName= roomImageFileName;
         }
         #endregion
+
 
     }
 }
