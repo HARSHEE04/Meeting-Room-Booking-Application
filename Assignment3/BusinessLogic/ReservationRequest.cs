@@ -129,6 +129,7 @@ namespace Assignment3.BusinessLogic
             set { _meetingRooms = value; }
         }
 
+
         public ReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants) //need to see if we need it for bonus, call setter 
         {
             RequestedBy=requestedBy;

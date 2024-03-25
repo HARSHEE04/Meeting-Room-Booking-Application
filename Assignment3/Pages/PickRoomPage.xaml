@@ -32,6 +32,7 @@
 
         <ListView
             Grid.Row="1" Grid.Column="0"
+            ItemSelected="OnListviewItemSelected"
             x:Name="RoomTypesListview">
             
             <ListView.ItemTemplate>
@@ -75,7 +76,6 @@
 
         <Image
             Grid.Row="1"  Grid.Column="2"
-            Source="ushape.png"
             VerticalOptions="Center"
             HorizontalOptions="Center"
             x:Name="RealRoomImage">

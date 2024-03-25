@@ -29,5 +29,29 @@ public partial class PickRoomPage : ContentPage
         Navigation.PushAsync(new ViewRequestsPage());
         //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
     }
+
+    private void OnListviewItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        //EXPLAIN WHAT E IS, explain this portion in detail
+
+        var selectedRoom=(MeetingRoom)e.SelectedItem;
+
+        if(selectedRoom.LayoutType== RoomLayoutType.hollowsquare)
+        {
+            RealRoomImage.Source = "hollowsquare.png";
+        }
+        if (selectedRoom.LayoutType == RoomLayoutType.classroom)
+        {
+            RealRoomImage.Source = "classroom.png";
+        }
+        if (selectedRoom.LayoutType == RoomLayoutType.ushape)
+        {
+            RealRoomImage.Source = "ushape.png";
+        }
+        if (selectedRoom.LayoutType == RoomLayoutType.auditorium)
+        {
+            RealRoomImage.Source = "auditoriumm.png";
+        }
+    }
 }
 

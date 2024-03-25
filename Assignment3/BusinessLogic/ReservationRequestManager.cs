@@ -27,7 +27,7 @@ namespace Assignment3.BusinessLogic
         //AddMeetingRoom: accepts the data required to create an instance of meeting
         //room, and adds it to the collection of meeting rooms provided the room
         //number is not duplicate
-        public List<MeetingRoom> AddMeetingRoom(string roomNumber, int seatingCapacity, RoomLayoutType layoutType, string roomImageFileName)
+        public MeetingRoom AddMeetingRoom(string roomNumber, int seatingCapacity, RoomLayoutType layoutType, string roomImageFileName)
         {
             //check to see if the room number already exists
                 foreach (MeetingRoom current in _meetingRooms)
@@ -39,15 +39,25 @@ namespace Assignment3.BusinessLogic
                 }   
             MeetingRoom meetRoom1= new MeetingRoom (roomNumber, seatingCapacity, layoutType, roomImageFileName);
             _meetingRooms.Add(meetRoom1);
-            return _meetingRooms;
+            return meetRoom1;
         }
 
-        //AddReservationRequest: accepts the data required to create a reservationrequest(except request id and request status).
+        ////AddReservationRequest: accepts the data required to create a reservationrequest(except request id and request status).
 
-        public 
+        //public ReservationRequest AddReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants, string roomNumber)
+        //{
+        //    ////ensure expected guests does not go over the max
+        //    //if(participants> )
+        //    ////check to see if the room exists
+        //    //foreach(MeetingRoom current in _meetingRooms)
+        //    //{
+        //    //    if(current.RoomNumber==roomNumber)
+        //    //}
+        //}
 
 
 
-       
+
+
     }
 }
