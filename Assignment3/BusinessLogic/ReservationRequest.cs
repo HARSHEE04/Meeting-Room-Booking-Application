@@ -36,7 +36,7 @@ namespace Assignment3.BusinessLogic
         public int RequestId
         {
             get { return _requestID; }
-            init
+            set
             {
                 _requestID = value + 1;
             }

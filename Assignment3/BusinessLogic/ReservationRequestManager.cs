@@ -27,7 +27,7 @@ namespace Assignment3.BusinessLogic
         //AddMeetingRoom: accepts the data required to create an instance of meeting
         //room, and adds it to the collection of meeting rooms provided the room
         //number is not duplicate
-        public MeetingRoom AddMeetingRoom(string roomNumber, int seatingCapacity, RoomLayoutType layoutType, string roomImageFileName)
+        public void AddMeetingRoom(string roomNumber, int seatingCapacity, RoomLayoutType layoutType, string roomImageFileName)
         {
             //check to see if the room number already exists
                 foreach (MeetingRoom current in _meetingRooms)
@@ -39,21 +39,39 @@ namespace Assignment3.BusinessLogic
                 }   
             MeetingRoom meetRoom1= new MeetingRoom (roomNumber, seatingCapacity, layoutType, roomImageFileName);
             _meetingRooms.Add(meetRoom1);
-            return meetRoom1;
+           
         }
 
-        ////AddReservationRequest: accepts the data required to create a reservationrequest(except request id and request status).
+        //AddReservationRequest: accepts the data required to create a reservationrequest(except request id and request status).
 
-        //public ReservationRequest AddReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants, string roomNumber)
-        //{
-        //    ////ensure expected guests does not go over the max
-        //    //if(participants> )
-        //    ////check to see if the room exists
-        //    //foreach(MeetingRoom current in _meetingRooms)
-        //    //{
-        //    //    if(current.RoomNumber==roomNumber)
-        //    //}
-        //}
+        public void  AddReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants,string roomNumber)
+            // public void AddReservationRequest(ReservationRequest reservation1, string roomNumber), checks to see if this object matches the validations, then add it to the list of requests
+        {
+            
+            //check to see if the room exists
+            foreach(MeetingRoom current in _meetingRooms)
+            {
+                if (current.RoomNumber == roomNumber)
+                {
+                   if(current.SeatingCapacity<participants)
+                    {
+                        throw new Exception($"The participants needs to be less than or equal the seating capacity which is {current.SeatingCapacity}");
+                    }
+                    else
+                    {
+                        ReservationRequest request1= new ReservationRequest(requestedBy,description, startDateTime, endDateTime, participants);
+                        int requestID= request1.RequestId;
+                        _reservationRequests.Add(request1);
+                    }
+                }
+                else
+                {
+                    throw new Exception("The room number does not exist");
+                }
+            }
+
+           
+        }
 
 
 
