@@ -11,7 +11,7 @@ namespace Assignment3.BusinessLogic
      * This would be similar to the products class which had the construcor, properties but overide tostring method would be in 
      * requests class since requests are displayed on the View Reservation Requests page
      */
-    enum RoomLayoutType
+    public enum RoomLayoutType
     {
         hollowsquare,
         ushape,
@@ -28,7 +28,7 @@ namespace Assignment3.BusinessLogic
 
 
     //Shows the possible meeting venues
-    internal class MeetingRoom
+    public class MeetingRoom
     {
         private string _roomNumber;
         private int _seatingCapacity;

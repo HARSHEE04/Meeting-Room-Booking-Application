@@ -38,7 +38,7 @@ namespace Assignment3.BusinessLogic
             get { return _requestID; }
             set
             {
-                _requestID = value + 1;
+                _requestID += 1;
             }
         }
 

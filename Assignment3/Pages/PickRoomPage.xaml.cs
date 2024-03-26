@@ -6,6 +6,7 @@ namespace Assignment3.Pages;
 public partial class PickRoomPage : ContentPage
 {
     private ReservationRequestManager _requestmanager = new ReservationRequestManager();
+    private MeetingRoom selectedRoom;
     public PickRoomPage()
 	{
 		InitializeComponent();
@@ -14,30 +15,48 @@ public partial class PickRoomPage : ContentPage
 
     private void OnAddRequest(object sender, EventArgs e)
     {
-        //make sure a room is selected
+       
+        //ensure a room is selected
+        if (selectedRoom == null)
+        {
+            throw new Exception("Your selected room cannot be null");
+        }
+        else
+        {
+            //use the this keyword for to get info about the specific instance, basically gets the info about the room
 
+            Navigation.PushAsync(new AddRequestPage(this.selectedRoom));
+        }
 
-        //use the this keyword for to get info about the specific instance, basically gets the info about the room
-  
-        Navigation.PushAsync(new AddRequestPage());
+        
         
         //This means take the room number eg A102, Layout style, capacity and real room image with you on next page
     }
 
     private void OnViewRequest(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new ViewRequestsPage());
-        //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
+        //ensure a room is selected
+        if (selectedRoom == null)
+        {
+            throw new Exception("Your selected room cannot be null");
+        }
+        else
+        {
+            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom));
+            //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
+        }
+
+       
     }
 
     //need to use data binding to do this,
     private void OnListviewItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         //EXPLAIN WHAT E IS, explain this portion in detail
+        selectedRoom = (MeetingRoom)e.SelectedItem;
 
-        var selectedRoom=(MeetingRoom)e.SelectedItem;
 
-        if(selectedRoom.LayoutType== RoomLayoutType.hollowsquare)
+        if (selectedRoom.LayoutType== RoomLayoutType.hollowsquare)
         {
             RealRoomImage.Source = "hollowsquare.png";
         }

@@ -110,6 +110,32 @@
       Margin="5"
    BackgroundColor="Purple">
         </Button>
+        <Image
+        Grid.Row="3"  Grid.RowSpan="4" Grid.Column="0"
+         Source="{Binding Path=RoomImageFileName}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+        </Image>
+
+        <Label
+            Grid.Row="9" Grid.Column="0"
+            Text="{Binding Path=RoomNumber}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+        </Label>
+        <Label
+     Grid.Row="10" Grid.Column="0"
+     Text="{Binding Path=LayoutType}"
+     VerticalOptions="Center"
+     HorizontalOptions="Center">
+        </Label>
+
+        <Label
+        Grid.Row="11" Grid.Column="0"
+        Text="{Binding Path=SeatingCapacity}"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+        </Label>
 
     </Grid>
 </ContentPage>
