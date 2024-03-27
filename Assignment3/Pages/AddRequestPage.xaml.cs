@@ -33,7 +33,7 @@ public partial class AddRequestPage : ContentPage
 
         _requestManager.AddReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text),_selectedRoom.RoomNumber);
 
-        
+        DisplayAlert("Success", "Your request has been added", "Ok");
 
     }
 

@@ -5,11 +5,12 @@ namespace Assignment3.Pages;
 
 public partial class PickRoomPage : ContentPage
 {
-    private ReservationRequestManager _requestmanager = new ReservationRequestManager();
+    private ReservationRequestManager _requestmanager;
     private MeetingRoom selectedRoom;
     public PickRoomPage()
 	{
 		InitializeComponent();
+        _requestmanager= new ReservationRequestManager();
         RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms;
 }
 

@@ -4,22 +4,23 @@ using Assignment3.BusinessLogic;
 
 public partial class ViewRequestsPage : ContentPage
 {
-    private MeetingRoom _selectedRoom;
     private ReservationRequestManager _requestManager;
-    
-    
-    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requestsList) 
+    private MeetingRoom _selectedRoom;
+
+    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requestsList)
     {
         InitializeComponent();
-        this.BindingContext = selectedRoom;
         _selectedRoom = selectedRoom;
+        _requestManager = requestsList;
+        BindingContext = selectedRoom;
+        BindingContext = requestsList;
 
-        _requestManager =requestsList;
-        AllRequestListview.ItemsSource =requestsList.ReservationRequests;
-
-
-
+       
+        AllRequestListview.ItemsSource = requestsList.ReservationRequests;
     }
+
+    public MeetingRoom SelectedRoom => _selectedRoom;
+    public List<ReservationRequest> ReservationRequests => _requestManager.ReservationRequests;
 
     private void OnBackToRooms(object sender, EventArgs e)
     {

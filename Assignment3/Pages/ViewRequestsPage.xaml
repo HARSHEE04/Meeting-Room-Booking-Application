@@ -6,26 +6,27 @@
     <Grid RowDefinitions="Auto,*,Auto">
         
         <Label Grid.Row="0"
-               Text="{Binding  Path= RoomNumber}"
+             
+               Text="{Binding RoomNumber}"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
 
        
         <ListView x:Name="AllRequestListview"
-                  BackgroundColor="LightPink"
+                  
                   Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding Path= RequestedBy, StringFormat='Requested by: {0}'}"
+                            <Label Text="{Binding RequestedBy, StringFormat='Requested by: {0}'}"
                                    FontAttributes="Bold"/>
-                            <Label Text="{Binding  Path= Description, StringFormat='Meeting of {0}'}"
+                            <Label Text="{Binding  Description, StringFormat='Meeting of {0}'}"
                                    FontAttributes="Italic"/>
-                            <Label Text="{Binding  Path= StartDateTime, StringFormat='Scheduled on: {0:g}'}"/>
-                            <Label Text="{Binding  Path= EndDateTime, StringFormat='From: {0:t} to {1:t}'}"
+                            <Label Text="{Binding  StartDateTime, StringFormat='Scheduled on: {0:g}'}"/>
+                            <Label Text="{Binding  EndDateTime, StringFormat='From: {0:t} to {1:t}'}"
                                    FontAttributes="Bold"/>
-                            <Label Text="{Binding  Path=Status, StringFormat='Status: {0}'}"/>
+                            <Label Text="{Binding Status, StringFormat='Status: {0}'}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
