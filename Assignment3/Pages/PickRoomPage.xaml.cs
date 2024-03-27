@@ -36,6 +36,8 @@ public partial class PickRoomPage : ContentPage
 
     private void OnViewRequest(object sender, EventArgs e)
     {
+
+
         //ensure a room is selected
         if (selectedRoom == null)
         {

@@ -7,17 +7,23 @@ public partial class ViewRequestsPage : ContentPage
     private ReservationRequestManager _requestManager;
     private MeetingRoom _selectedRoom;
 
-   
-    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requestsList)
+   //notes to self: 
+   /*Steps to show the objects list properly in listview
+    * 1) ensure that the list of all the requests is getting passed to this page properly
+    * 2) Ensure that I bind the selected room's room number to the top 
+    * 3) Enusre that I bind the list of requests for this page to the listview
+    */
+
+    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests)
     {
         InitializeComponent();
         _selectedRoom = selectedRoom;
-        _requestManager = requestsList;
+        _requestManager = requests;
 
-        BindingContext = selectedRoom;
+        BindingContext = this;
 
 
-        AllRequestListview.ItemsSource = requestsList.ReservationRequests;
+        AllRequestListview.ItemsSource = requests.ReservationRequests;
     }
 
  
