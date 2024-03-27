@@ -3,26 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.ViewRequestsPage"
              Title="ViewRequestsPage">
-    <Grid
-        RowDefinitions="*,4*,*">
+    <Grid RowDefinitions="Auto,*,Auto">
+        
+        <Label Grid.Row="0"
+               Text="{Binding  Path= RoomNumber}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
 
-
-        <Label 
-            Grid.Row="0"
-            Text="Showing Reservation for Room{BINDING THE NAME OF CHOSEN ROOM}"/>
-        <ListView
-            Grid.Row="1"
-            x:Name="AllRequestListview">
+       
+        <ListView x:Name="AllRequestListview"
+                  BackgroundColor="LightPink"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Path= RequestedBy, StringFormat='Requested by: {0}'}"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding  Path= Description, StringFormat='Meeting of {0}'}"
+                                   FontAttributes="Italic"/>
+                            <Label Text="{Binding  Path= StartDateTime, StringFormat='Scheduled on: {0:g}'}"/>
+                            <Label Text="{Binding  Path= EndDateTime, StringFormat='From: {0:t} to {1:t}'}"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding  Path=Status, StringFormat='Status: {0}'}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
 
-        <Button
-   Grid.Row="2" 
-   Text="Back to Rooms"
-   Clicked="OnBackToRooms"
-   VerticalOptions="Center"
-      Margin="5"
-   HorizontalOptions="Center"
-   BackgroundColor="Purple">
-        </Button>
+     
+        <Button Grid.Row="2"
+                Text="Back to Rooms"
+                Clicked="OnBackToRooms"
+                VerticalOptions="Center"
+                Margin="5"
+                HorizontalOptions="Center"
+                BackgroundColor="Purple"/>
     </Grid>
 </ContentPage>
