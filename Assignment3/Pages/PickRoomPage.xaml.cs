@@ -10,7 +10,7 @@ public partial class PickRoomPage : ContentPage
     public PickRoomPage()
 	{
 		InitializeComponent();
-        RoomTypesListview.ItemsSource = _requestmanager._meetingRooms;
+        RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms;
 }
 
     private void OnAddRequest(object sender, EventArgs e)
@@ -25,7 +25,7 @@ public partial class PickRoomPage : ContentPage
         {
             //use the this keyword for to get info about the specific instance, basically gets the info about the room
 
-            Navigation.PushAsync(new AddRequestPage(this.selectedRoom));
+            Navigation.PushAsync(new AddRequestPage(this.selectedRoom,_requestmanager));
         }
 
         
@@ -42,7 +42,7 @@ public partial class PickRoomPage : ContentPage
         }
         else
         {
-            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom));
+            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom, _requestmanager));
             //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
         }
 
@@ -70,7 +70,7 @@ public partial class PickRoomPage : ContentPage
         }
         if (selectedRoom.LayoutType == RoomLayoutType.auditorium)
         {
-            RealRoomImage.Source = "auditoriumm.png";
+            RealRoomImage.Source = "auditorium.png";
         }
     }
 }

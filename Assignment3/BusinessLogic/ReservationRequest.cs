@@ -13,13 +13,13 @@ namespace Assignment3.BusinessLogic
     //what methods would be required for this Reservation Request class?
    /*Overide to string method
     */
-    enum RequestStatus
+    public enum RequestStatus
     {
         Accepted,
         Rejected,
         Pending
     }
-    internal class ReservationRequest
+    public class ReservationRequest
     {
         private int _requestID;
         private string _requestedBy;

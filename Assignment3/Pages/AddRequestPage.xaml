@@ -71,6 +71,7 @@
 
         <TimePicker
       Grid.Row="9"  Grid.Column="2"
+       Time="{Binding StartTimePicker}"
       x:Name="EndTimePicker">
         </TimePicker>
 

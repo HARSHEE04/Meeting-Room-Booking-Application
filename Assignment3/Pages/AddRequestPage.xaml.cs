@@ -6,10 +6,19 @@ public partial class AddRequestPage : ContentPage
     //perform validation checks here as well , ask
 {
     private MeetingRoom _selectedRoom;
-	public AddRequestPage(MeetingRoom selectedRoom)//takes the info about the selected room to the next page
+    private ReservationRequestManager _requestManager;
+    //ReservationRequestManager Requests; //
+    public AddRequestPage(MeetingRoom selectedRoom, ReservationRequestManager allrequests)//takes the info about the selected room to the next page
 	{
 		InitializeComponent();
         this.BindingContext = selectedRoom;
+        _selectedRoom = selectedRoom;
+
+        _requestManager= allrequests;
+        
+          
+      
+
         /// to show info for the object,you just need to use the property.
         
         
@@ -17,13 +26,14 @@ public partial class AddRequestPage : ContentPage
 
     private void OnAddRequest(object sender, EventArgs e)
     {
+        
+        DateTime startDateTime= DatePicker.Date + StartTimePicker.Time;
 
-        //ensure a room is selected
+        DateTime endDateTime= DatePicker.Date + EndTimePicker.Time;
 
-        //takes all the user info, makes an object of Reservation request and add's it to a running list of reservations for that specific room
-        DisplayAlert("Success", "Congrats, your reservation is made", "ok");
+        _requestManager.AddReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text),_selectedRoom.RoomNumber);
 
-        //make the reservation objects here
+        
 
     }
 

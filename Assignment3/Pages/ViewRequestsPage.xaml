@@ -11,7 +11,8 @@
             Grid.Row="0"
             Text="Showing Reservation for Room{BINDING THE NAME OF CHOSEN ROOM}"/>
         <ListView
-            Grid.Row="1">
+            Grid.Row="1"
+            x:Name="AllRequestListview">
         </ListView>
 
         <Button
