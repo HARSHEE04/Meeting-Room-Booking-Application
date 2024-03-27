@@ -1,30 +1,28 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.ViewRequestsPage"
              Title="ViewRequestsPage">
     <Grid RowDefinitions="Auto,*,Auto">
-        
+
         <Label Grid.Row="0"
-             
                Text="{Binding RoomNumber}"
                HorizontalOptions="Center"
                VerticalOptions="Center"/>
 
-       
+
         <ListView x:Name="AllRequestListview"
-                  
-                  Grid.Row="1">
+                  Grid.Row="1"
+                  ItemsSource="{Binding ReservationRequests}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
                             <Label Text="{Binding RequestedBy, StringFormat='Requested by: {0}'}"
                                    FontAttributes="Bold"/>
-                            <Label Text="{Binding  Description, StringFormat='Meeting of {0}'}"
+                            <Label Text="{Binding Description, StringFormat='Meeting of {0}'}"
                                    FontAttributes="Italic"/>
-                            <Label Text="{Binding  StartDateTime, StringFormat='Scheduled on: {0:g}'}"/>
-                            <Label Text="{Binding  EndDateTime, StringFormat='From: {0:t} to {1:t}'}"
+                            <Label Text="{Binding StartDateTime, StringFormat='Scheduled on: {0:g}'}"/>
+                            <Label Text="{Binding EndDateTime, StringFormat='From: {0:t} to {1:t}'}"
                                    FontAttributes="Bold"/>
                             <Label Text="{Binding Status, StringFormat='Status: {0}'}"/>
                         </StackLayout>
@@ -33,7 +31,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-     
+
         <Button Grid.Row="2"
                 Text="Back to Rooms"
                 Clicked="OnBackToRooms"
@@ -43,3 +41,4 @@
                 BackgroundColor="Purple"/>
     </Grid>
 </ContentPage>
+
