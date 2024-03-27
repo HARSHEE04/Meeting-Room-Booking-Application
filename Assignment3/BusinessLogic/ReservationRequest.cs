@@ -21,6 +21,7 @@ namespace Assignment3.BusinessLogic
     }
     public class ReservationRequest
     {
+        private static int lastRequestID = 0;
         private int _requestID;
         private string _requestedBy;
         private string _description;
@@ -33,13 +34,9 @@ namespace Assignment3.BusinessLogic
 
         //RequestID property
 
-        public int RequestId
-        {
+        public int RequestID { 
             get { return _requestID; }
-            set
-            {
-                _requestID += 1;
-            }
+            set { _requestID = lastRequestID+1; }
         }
 
         //RequestedBy property
@@ -138,7 +135,7 @@ namespace Assignment3.BusinessLogic
             EndDateTime=endDateTime;
             Participants=participants;
             Status = RequestStatus.Pending;
-            RequestId = _requestID;
+            RequestID = _requestID;
         }
 
         public override string ToString()

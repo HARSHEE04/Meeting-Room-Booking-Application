@@ -4,26 +4,23 @@ using Assignment3.BusinessLogic;
 
 public partial class ViewRequestsPage : ContentPage
 {
-    private ReservationRequestManager _requestManager;
-    private MeetingRoom _selectedRoom;
+   
 
-   //notes to self: 
-   /*Steps to show the objects list properly in listview
-    * 1) ensure that the list of all the requests is getting passed to this page properly
-    * 2) Ensure that I bind the selected room's room number to the top 
-    * 3) Enusre that I bind the list of requests for this page to the listview
-    */
+    //notes to self: 
+    /*Steps to show the objects list properly in listview
+     * 1) ensure that the list of all the requests is getting passed to this page properly
+     * 2) Ensure that I bind the selected room's room number to the top 
+     * 3) Enusre that I bind the list of requests for this page to the listview
+     */
 
-    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests)
+    
+
+    public ViewRequestsPage(MeetingRoom selectedRoom)
     {
+       
         InitializeComponent();
-        _selectedRoom = selectedRoom;
-        _requestManager = requests;
-
-        BindingContext = this;
-
-
-        AllRequestListview.ItemsSource = requests.ReservationRequests;
+        
+      
     }
 
  
@@ -32,4 +29,6 @@ public partial class ViewRequestsPage : ContentPage
     {
         Navigation.PushAsync(new PickRoomPage());
     }
+
+ 
 }

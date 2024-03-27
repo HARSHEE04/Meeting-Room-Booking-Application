@@ -6,7 +6,7 @@ namespace Assignment3.Pages;
 public partial class PickRoomPage : ContentPage
 {
     private ReservationRequestManager _requestmanager;
-    private MeetingRoom selectedRoom;
+    private MeetingRoom selectedRoom;//allowed to have this?
     public PickRoomPage()
 	{
 		InitializeComponent();
@@ -26,7 +26,7 @@ public partial class PickRoomPage : ContentPage
         {
             //use the this keyword for to get info about the specific instance, basically gets the info about the room
 
-            Navigation.PushAsync(new AddRequestPage(this.selectedRoom,_requestmanager));
+            Navigation.PushAsync(new AddRequestPage(this.selectedRoom,_requestmanager.AddReservationRequest));
         }
 
         
@@ -45,7 +45,7 @@ public partial class PickRoomPage : ContentPage
         }
         else
         {
-            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom, _requestmanager));
+            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom));
             //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
         }
 

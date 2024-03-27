@@ -14,10 +14,12 @@ namespace Assignment3.BusinessLogic
     //Has two methods 1) Add meeting room and 2) Add Reservation Request
     public class ReservationRequestManager
     {
-        private List<MeetingRoom> _meetingRooms = new List<MeetingRoom>(); // IS THIS ALLOWED?
-        private List<ReservationRequest> _reservationRequests = new List<ReservationRequest>();
+        private List<MeetingRoom> _meetingRooms; // IS THIS ALLOWED?
+        private List<ReservationRequest> _reservationRequests;
         public ReservationRequestManager()
         {
+            _meetingRooms=new List<MeetingRoom>();
+            _reservationRequests=new List<ReservationRequest>();
              _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png"));
             _meetingRooms.Add(new MeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png"));
             _meetingRooms.Add(new MeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png"));
@@ -47,7 +49,7 @@ namespace Assignment3.BusinessLogic
            
         }
 
-        //AddReservationRequest: accepts the data required to create a reservationrequest(except request id and request status).
+ 
         public void AddReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants, string roomNumber)
         {
             
@@ -67,7 +69,7 @@ namespace Assignment3.BusinessLogic
                     else
                     {
                         ReservationRequest request1 = new ReservationRequest(requestedBy, description, startDateTime, endDateTime, participants);
-                        int requestID = request1.RequestId;
+                        int requestID = request1.RequestID;
                         _reservationRequests.Add(request1);
                     }
 
