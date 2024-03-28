@@ -14,7 +14,6 @@
             VerticalOptions="Center"/>
         <ListView
             Grid.Row="1"
-            
             x:Name="AllRequestListview">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -43,9 +42,7 @@
    Text="Back to Rooms"
    Clicked="OnBackToRooms"
    VerticalOptions="Center"
-      Margin="5"
-   HorizontalOptions="Center"
-   BackgroundColor="Purple">
+   HorizontalOptions="Center">
         </Button>
     </Grid>
 </ContentPage>

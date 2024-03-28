@@ -3,20 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.PickRoomPage"
              Title="PickRoomPage">
-
+    <!--"{StaticResource ListviewLabels}"-->
     <Grid
         ColumnDefinitions="*,*"
         RowDefinitions="*,3*,*">
-
 
         <Button
             Grid.Row="2" Grid.Column="0"
             Text="Add Request"
             Clicked="OnAddRequest"
             VerticalOptions="Center"
-             Margin="5"
-            HorizontalOptions="End"
-            BackgroundColor="Purple">
+            HorizontalOptions="End">
 
         </Button>
 
@@ -25,9 +22,7 @@
          Text="View Requests"
          Clicked="OnViewRequest"
          VerticalOptions="Center"
-            Margin="5"
-         HorizontalOptions="Start"
-         BackgroundColor="Purple">
+         HorizontalOptions="Start">
         </Button>
 
         <ListView
@@ -39,38 +34,32 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid
-                      MaximumHeightRequest="200"
-                     BackgroundColor="LightBlue"
-                    ColumnDefinitions="*, *">
+                       ColumnDefinitions="0.5*, 0.7*">
                             <Image
                                 Grid.Column="0" 
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                VerticalOptions="Center"
+                                VerticalOptions="StartAndExpand"
                                 Source="{Binding Path= RoomTypeIcon}" 
                                 HeightRequest="100 "
                                 WidthRequest="100">
                             </Image>
-                            <VerticalStackLayout
+                            <StackLayout
                                 Grid.Column="1">
-                                <Label
+                                <Label        
+                                    HorizontalOptions="Start"
                                     TextColor="Black"
-                                    VerticalOptions="Center"
-                                     
                                     Text="{Binding Path= RoomNumber}">
                                 </Label>
                                 <Label
-                                    TextColor="Black"
-                                     VerticalOptions="Center"
-                                    
-                                    Text="{Binding Path= LayoutType}">
+                                     HorizontalOptions="Start"
+                                   TextColor="Black"
+                                    Text="{Binding Path= LayoutType,StringFormat='Layout: {0}'}">
                                 </Label>
                             <Label
+                                     HorizontalOptions="Start"
                                     TextColor="Black"
-                                   VerticalOptions="Center"
-                                    Text="{Binding Path =SeatingCapacity}">
+                                    Text="{Binding Path =SeatingCapacity, StringFormat='Capacity: {0}'}">
                             </Label>
-                                </VerticalStackLayout>
+                                </StackLayout>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
@@ -79,8 +68,6 @@
 
         <Image
             Grid.Row="1"  Grid.Column="2"
-            VerticalOptions="Center"
-            HorizontalOptions="Center"
             x:Name="RealRoomImage">
 
         </Image>

@@ -8,6 +8,7 @@
         ColumnDefinitions="*,*,*">
 
         <Label
+           
             Grid.Row="2" Grid.Column="1"
             Text="Requested by:"
             VerticalOptions="Center">
@@ -16,13 +17,13 @@
         <Entry
             Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
             x:Name="Requestedby"
-            Margin="0,0,15,0"
             Placeholder="John Doe"
             VerticalOptions="Center">
         </Entry>
 
 
         <Label
+       
           Grid.Row="4" Grid.Column="1"
           Text="Description:"
           VerticalOptions="Center">
@@ -30,12 +31,12 @@
 
         <Editor
             Grid.Row="5"  Grid.Column="1" Grid.ColumnSpan="2"
-            Margin="0,0,15,0"
             Placeholder="Meeting of _______ Please just fill in the blank in this area"
             x:Name="Description">
         </Editor>
 
         <Label
+       
         Grid.Row="6" Grid.Column="1"
         Text="Meeting Date:"
         VerticalOptions="Center">
@@ -50,6 +51,7 @@
 
 
         <Label
+       
         Grid.Row="8" Grid.Column="1"
          Margin="5,10,0,2"
         Text="Start Time"
@@ -63,6 +65,7 @@
 
 
         <Label
+        
           Grid.Row="8" Grid.Column="2"
            Margin="5,10,0,2"
           Text="End Time"
@@ -77,6 +80,7 @@
 
 
         <Label
+       
       Grid.Row="10" Grid.Column="1"
       Text="Participant Count:"
       VerticalOptions="Center">
@@ -85,7 +89,6 @@
         <Entry
       Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2"
       x:Name="ParticipantCount"
-      Margin="0,0,15,0"
       Placeholder="15"
       VerticalOptions="Center">
         </Entry>
@@ -95,10 +98,9 @@
       Text="Add Request"
       Clicked="OnAddRequest"
       VerticalOptions="Center"
-       Margin="5"
-          HorizontalOptions="Center"
-      
-      BackgroundColor="Purple">
+     HorizontalOptions="Center">
+
+
 
         </Button>
 
@@ -107,33 +109,33 @@
    Text="Back to Rooms"
    Clicked="OnBackToRooms"
    VerticalOptions="Center"
-   HorizontalOptions="Start"
-      Margin="5"
-   BackgroundColor="Purple">
+   HorizontalOptions="Start">
+            
         </Button>
         <Image
         Grid.Row="3"  Grid.RowSpan="4" Grid.Column="0"
-         Source="{Binding Path=RoomImageFileName}"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
+         Source="{Binding Path=RoomImageFileName}">
         </Image>
 
         <Label
+           
             Grid.Row="9" Grid.Column="0"
             Text="{Binding Path=RoomNumber}"
             VerticalOptions="Center"
             HorizontalOptions="Center">
         </Label>
         <Label
+   
      Grid.Row="10" Grid.Column="0"
-     Text="{Binding Path=LayoutType}"
+     Text="{Binding Path=LayoutType,StringFormat='Layout: {0}'}"
      VerticalOptions="Center"
      HorizontalOptions="Center">
         </Label>
 
         <Label
+        
         Grid.Row="11" Grid.Column="0"
-        Text="{Binding Path=SeatingCapacity}"
+        Text="{Binding Path=SeatingCapacity,StringFormat='Capacity: {0}'}"
         VerticalOptions="Center"
         HorizontalOptions="Center">
         </Label>

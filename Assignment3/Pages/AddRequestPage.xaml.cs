@@ -1,5 +1,4 @@
 using Assignment3.BusinessLogic;
-using Assignment3.WinUI;
 namespace Assignment3.Pages;
 
 public partial class AddRequestPage : ContentPage
@@ -26,8 +25,6 @@ public partial class AddRequestPage : ContentPage
 
 
         _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
-
-        
 
         DisplayAlert("Success", "Your request has been added", "Ok");
 

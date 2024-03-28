@@ -8,11 +8,13 @@ public partial class PickRoomPage : ContentPage
     private ReservationRequestManager _requestmanager;
     private MeetingRoom selectedRoom;//allowed to have this?
     public PickRoomPage()
-	{
-		InitializeComponent();
-        _requestmanager= new ReservationRequestManager();
+    {
+        InitializeComponent();
+        _requestmanager = new ReservationRequestManager();
         RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms;
-}
+    }
+
+
 
     private void OnAddRequest(object sender, EventArgs e)
     {

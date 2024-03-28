@@ -4,7 +4,7 @@ using Assignment3.BusinessLogic;
 
 public partial class ViewRequestsPage : ContentPage
 {
-   
+    private MeetingRoom _selectedRoom;
 
     //notes to self: 
     /*Steps to show the objects list properly in listview
@@ -13,9 +13,10 @@ public partial class ViewRequestsPage : ContentPage
      * 3) Enusre that I bind the list of requests for this page to the listview
      */
 
-    
+    //make a method to get the list from the ReservationRequestsManager
 
-    public ViewRequestsPage(MeetingRoom selectedRoom)
+    
+    public ViewRequestsPage(MeetingRoom selectedRoom  )
     {
        
         InitializeComponent();
