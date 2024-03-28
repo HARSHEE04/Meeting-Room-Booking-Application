@@ -16,31 +16,30 @@ public partial class AddRequestPage : ContentPage
 
     }
 
-    //method to change the endtime to the same as start time, does not work yet
-    private void StartTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-    {
-       
-        if (e.PropertyName == nameof(TimePicker.Time))
-        {
-            
-            EndTimePicker.Time = StartTimePicker.Time;
-        }
-    }
-
     private void OnAddRequest(object sender, EventArgs e)
     {
-        
 
-        DateTime startDateTime= DatePicker.Date + StartTimePicker.Time;
+        try
+        {
+            DateTime startDateTime = DatePicker.Date + StartTimePicker.Time;
+            DateTime endDateTime = DatePicker.Date + EndTimePicker.Time;
+            int participantCount;
+            if (!int.TryParse(ParticipantCount.Text, out participantCount))
+            {
+                throw new ArgumentException("Participant count must be a valid integer.");
+            }
 
-        DateTime endDateTime= DatePicker.Date + EndTimePicker.Time;
+            _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, participantCount, _selectedRoom.RoomNumber);
 
+            DisplayAlert("Success", "Your request has been added", "Ok");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "Ok");
+        }
+    
 
-        _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
-
-        DisplayAlert("Success", "Your request has been added", "Ok");
-
-    }
+}
 
     private void OnBackToRooms(object sender, EventArgs e)
     {

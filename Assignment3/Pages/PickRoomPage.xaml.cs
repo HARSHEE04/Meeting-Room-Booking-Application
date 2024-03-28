@@ -38,7 +38,7 @@ public partial class PickRoomPage : ContentPage
 
     private void OnViewRequest(object sender, EventArgs e)
     {
-
+      
 
         //ensure a room is selected
         if (selectedRoom == null)
@@ -47,7 +47,7 @@ public partial class PickRoomPage : ContentPage
         }
         else
         {
-            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom));
+            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom,_requestmanager));
             //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
         }
 
@@ -55,6 +55,12 @@ public partial class PickRoomPage : ContentPage
     }
 
     //need to use data binding to do this,
+    //}
+    //private void OnRoomSelectionChanged(object sender, EventArgs e)
+    //{
+    //    RealRoomImage.Source.BindingContext = this.selectedRoom.RoomImageFileName;
+    //}
+
     private void OnListviewItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         //EXPLAIN WHAT E IS, explain this portion in detail

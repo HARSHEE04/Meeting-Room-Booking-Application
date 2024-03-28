@@ -1,4 +1,5 @@
 ﻿using Assignment3.BusinessLogic;
+
 using Microsoft.Maui.Controls.Compatibility;
 using System;
 using System.Collections.Generic;
@@ -52,16 +53,12 @@ namespace Assignment3.BusinessLogic
  
         public void AddReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants, string roomNumber)
         {
-            
-            bool roomExists = false;
-
-            
+                     
             foreach (MeetingRoom current in _meetingRooms)
             {
                 if (current.RoomNumber == roomNumber)
                 {
-                    roomExists = true; 
-
+                  
                     if (current.SeatingCapacity < participants)
                     {
                         throw new Exception($"The participants need to be less than or equal to the seating capacity, which is {current.SeatingCapacity}");
@@ -71,18 +68,20 @@ namespace Assignment3.BusinessLogic
                         ReservationRequest request1 = new ReservationRequest(requestedBy, description, startDateTime, endDateTime, participants);
                         int requestID = request1.RequestID;
                         _reservationRequests.Add(request1);
+                        
                     }
 
                     
-                    break;
+           
+                    
                 }
             }
 
             
-            if (!roomExists)
-            {
-                throw new Exception("The room number does not exist");
-            }
+            //if (!roomExists)
+            //{
+            //    throw new Exception("The room number does not exist");
+            //}
         }
 
 

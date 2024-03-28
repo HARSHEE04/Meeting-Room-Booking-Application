@@ -86,9 +86,13 @@ namespace Assignment3.BusinessLogic
             get { return _endDateTime; }
             set
             {
+                if (value.Date != _startDateTime.Date)
+                {
+                    throw new Exception("The end day must be the same as the start day");
+                }
                 if (value < _startDateTime)
                 {
-                    throw new Exception("The end day and time must be greater than the start day and time");
+                    throw new Exception("The end time must be greater than the start time");
                 }
                 _endDateTime = value;
             }

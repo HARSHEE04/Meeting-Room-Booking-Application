@@ -16,12 +16,14 @@ public partial class ViewRequestsPage : ContentPage
     //make a method to get the list from the ReservationRequestsManager
 
     
-    public ViewRequestsPage(MeetingRoom selectedRoom  )
-    {
-       
+    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests  )
+    {  
         InitializeComponent();
-        
-      
+        _selectedRoom = selectedRoom;
+        var roominfo = requests.ReservationRequests;
+        roominfo.ToString();
+        AllRequestListview.ItemsSource = roominfo;
+
     }
 
  

@@ -5,67 +5,64 @@
              x:Class="Assignment3.App">
     <Application.Resources>
         <ResourceDictionary>
+
             <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Purple" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="Margin" Value="5" />
-            <!-- Add more setters as needed -->
-        </Style>
-
-            <Style TargetType="Page">
-                <Setter Property="BackgroundColor" Value="White"/>
-            
+                <Setter Property="BackgroundColor" Value="Purple" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Margin" Value="5" />
+                <!-- Add more setters as needed -->
             </Style>
 
-        <!-- Style for Label on PickRoomPage/ViewReservationRequests -->
-        <Style TargetType="Label">
-            <Setter  Property="TextColor" Value="Purple" />
-            <Setter Property="VerticalOptions" Value="Center"/>
 
+            <!-- Style for Label on PickRoomPage/ViewReservationRequests -->
+            <Style  TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter  Property="TextColor" Value="Purple" />
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
-            <!-- Style for Label on AddReservationPage -->
-            <Style x:Key="ListviewLabels"     TargetType="Label">
-                <Setter  Property="TextColor" Value="Black" />
 
-            </Style>
+         
+
+
+               
+
+
 
             <!-- Style for Entry -->
-        <Style TargetType="Entry">
-            <Setter Property="Margin" Value="0,0,15,0" />
-            
-        </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin" Value="0,0,15,0" />
 
-        <!-- Style for Editor -->
-        <Style TargetType="Editor">
-            <Setter Property="Margin" Value="0,0,15,0" />
-           
-        </Style>
+            </Style>
 
-        <!-- Style for DatePicker -->
-        <Style TargetType="DatePicker">
-            
-        </Style>
+            <!-- Style for Editor -->
+            <Style TargetType="Editor">
+                <Setter Property="Margin" Value="0,0,15,0" />
 
-        <!-- Style for TimePicker -->
-        <Style TargetType="TimePicker">
-           
-        </Style>
+            </Style>
 
-        <!-- Style for ListView -->
-        <Style TargetType="ListView">
-            <Setter Property="BackgroundColor" Value="AliceBlue"/>
-        </Style>
+            <!-- Style for DatePicker -->
+            <Style TargetType="DatePicker">
 
-        <!-- Style for Image -->
-        <Style TargetType="Image">
+            </Style>
+
+            <!-- Style for TimePicker -->
+            <Style TargetType="TimePicker">
+
+            </Style>
+
+            <!-- Style for ListView -->
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="AliceBlue"/>
+            </Style>
+
+            <!-- Style for Image -->
+            <Style TargetType="Image">
                 <Setter Property="VerticalOptions" Value="Center"></Setter>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
 
-          
+
 
         </ResourceDictionary>
-
-
     </Application.Resources>
 </Application>
