@@ -74,13 +74,12 @@
 
         <TimePicker
       Grid.Row="9"  Grid.Column="2"
-       Time="{Binding StartTimePicker}"
+       Time="{Binding StartTimePicker, Mode=TwoWay}"
       x:Name="EndTimePicker">
         </TimePicker>
 
 
         <Label
-       
       Grid.Row="10" Grid.Column="1"
       Text="Participant Count:"
       VerticalOptions="Center">
@@ -99,9 +98,6 @@
       Clicked="OnAddRequest"
       VerticalOptions="Center"
      HorizontalOptions="Center">
-
-
-
         </Button>
 
         <Button
@@ -125,7 +121,6 @@
             HorizontalOptions="Center">
         </Label>
         <Label
-   
      Grid.Row="10" Grid.Column="0"
      Text="{Binding Path=LayoutType,StringFormat='Layout: {0}'}"
      VerticalOptions="Center"

@@ -15,6 +15,18 @@ public partial class AddRequestPage : ContentPage
         _addReservationRequest = addReservationRequest;
 
     }
+
+    //method to change the endtime to the same as start time, does not work yet
+    private void StartTimePicker_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+       
+        if (e.PropertyName == nameof(TimePicker.Time))
+        {
+            
+            EndTimePicker.Time = StartTimePicker.Time;
+        }
+    }
+
     private void OnAddRequest(object sender, EventArgs e)
     {
         
