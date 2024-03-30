@@ -21,13 +21,6 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
 
-         
-
-
-               
-
-
-
             <!-- Style for Entry -->
             <Style TargetType="Entry">
                 <Setter Property="Margin" Value="0,0,15,0" />

@@ -1,58 +1,81 @@
 using Assignment3.BusinessLogic;
+using System.ComponentModel;
 
 
 namespace Assignment3.Pages;
 
-public partial class PickRoomPage : ContentPage
+public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
 {
     private ReservationRequestManager _requestmanager;
-    private MeetingRoom selectedRoom;//allowed to have this?
+    private MeetingRoom selectedRoom;
+    public event PropertyChangedEventHandler PropertyChanged;
     public PickRoomPage()
     {
         InitializeComponent();
         _requestmanager = new ReservationRequestManager();
         RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms;
+         BindingContext = this;
     }
 
+    // Property to hold the selected room
+    public MeetingRoom SelectedRoom
+    {
+        get { return selectedRoom; }
+        set
+        {
+            if (selectedRoom != value)
+            {
+                selectedRoom = value;
+                OnPropertyChanged(nameof(SelectedRoom)); // Notify property changed
+            }
+        }
+    }
+
+    // OnPropertyChanged method to raise the PropertyChanged event
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
 
     private void OnAddRequest(object sender, EventArgs e)
     {
-       
-        //ensure a room is selected
-        if (selectedRoom == null)
+        try
         {
-            throw new Exception("Your selected room cannot be null");
-        }
-        else
-        {
+            //ensure a room is selected
+            if (selectedRoom == null)
+            {
+                throw new Exception("Please select a room before adding a request.");
+            }
             //use the this keyword for to get info about the specific instance, basically gets the info about the room
-
-            Navigation.PushAsync(new AddRequestPage(this.selectedRoom,_requestmanager.AddReservationRequest));
+            Navigation.PushAsync(new AddRequestPage(this.selectedRoom, _requestmanager.AddReservationRequest));
         }
-
-        
-        
-        //This means take the room number eg A102, Layout style, capacity and real room image with you on next page
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "OK");
+        }
     }
+
+
 
     private void OnViewRequest(object sender, EventArgs e)
     {
-      
-
-        //ensure a room is selected
-        if (selectedRoom == null)
+        try
         {
-            throw new Exception("Your selected room cannot be null");
-        }
-        else
-        {
-            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom,_requestmanager));
-            //just navigates to the requests page with the list of requests, need to take the chosen room's number with it
-        }
+            if (selectedRoom == null)
+            {
+                throw new Exception("Please select a room before viewing requests.");
+            }
 
-       
+            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom, _requestmanager));
+           
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "OK");
+        }
     }
+    
 
     //need to use data binding to do this,
     //}
@@ -61,28 +84,28 @@ public partial class PickRoomPage : ContentPage
     //    RealRoomImage.Source.BindingContext = this.selectedRoom.RoomImageFileName;
     //}
 
-    private void OnListviewItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        //EXPLAIN WHAT E IS, explain this portion in detail
-        selectedRoom = (MeetingRoom)e.SelectedItem;
+    //private void OnListviewItemSelected(object sender, SelectedItemChangedEventArgs e)
+    //{
+    //    //EXPLAIN WHAT E IS, explain this portion in detail
+    //    selectedRoom = (MeetingRoom)e.SelectedItem;
 
 
-        if (selectedRoom.LayoutType== RoomLayoutType.hollowsquare)
-        {
-            RealRoomImage.Source = "hollowsquare.png";
-        }
-        if (selectedRoom.LayoutType == RoomLayoutType.classroom)
-        {
-            RealRoomImage.Source = "classroom.png";
-        }
-        if (selectedRoom.LayoutType == RoomLayoutType.ushape)
-        {
-            RealRoomImage.Source = "ushape.png";
-        }
-        if (selectedRoom.LayoutType == RoomLayoutType.auditorium)
-        {
-            RealRoomImage.Source = "auditorium.png";
-        }
-    }
+    //    if (selectedRoom.LayoutType== RoomLayoutType.hollowsquare)
+    //    {
+    //        RealRoomImage.Source = "hollowsquare.png";
+    //    }
+    //    if (selectedRoom.LayoutType == RoomLayoutType.classroom)
+    //    {
+    //        RealRoomImage.Source = "classroom.png";
+    //    }
+    //    if (selectedRoom.LayoutType == RoomLayoutType.ushape)
+    //    {
+    //        RealRoomImage.Source = "ushape.png";
+    //    }
+    //    if (selectedRoom.LayoutType == RoomLayoutType.auditorium)
+    //    {
+    //        RealRoomImage.Source = "auditorium.png";
+    //    }
+    //}
 }
 

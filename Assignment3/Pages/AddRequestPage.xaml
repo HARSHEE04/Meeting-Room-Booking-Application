@@ -4,6 +4,14 @@
              x:Class="Assignment3.Pages.AddRequestPage"
              Title="AddRequestPage"
              Grid.ColumnSpan="2">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Add Reservation Request " HorizontalOptions="Center" VerticalOptions="Center"
+                 FontSize="Title"></Label>
+        </Grid>
+    </Shell.TitleView>
+
     <Grid
         RowDefinitions="*,*,*,*,*,3*,*,*,*,*,*,*,2*,*"
         ColumnDefinitions="*,*,*">

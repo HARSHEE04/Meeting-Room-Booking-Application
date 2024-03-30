@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.PickRoomPage"
              Title="PickRoomPage">
-    
-    
+
+    <Shell.TitleView>
+        <Grid>
+            <Label Text="Pick Meeting Room" HorizontalOptions="Center" VerticalOptions="Center"
+                 FontSize="Title"></Label>
+        </Grid>
+    </Shell.TitleView>
+
     <!--"{StaticResource ListviewLabels }"-->
     <Grid
         ColumnDefinitions="*,*"
@@ -28,10 +33,11 @@
         </Button>
 
         <ListView
-            Grid.Row="1" Grid.Column="0"
-            ItemSelected="OnListviewItemSelected"
-            x:Name="RoomTypesListview">
-            
+    Grid.Row="1" Grid.Column="0"
+    SelectedItem="{Binding SelectedRoom, Mode=TwoWay}"
+    ItemsSource="{Binding MeetingRooms}"
+    x:Name="RoomTypesListview">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -70,9 +76,9 @@
         </ListView>
 
         <Image         
-            Grid.Row="1"  Grid.Column="2"
-            x:Name="RealRoomImage">
-
+    Grid.Row="1"  Grid.Column="2"
+    x:Name="RealRoomImage"
+    Source="{Binding SelectedRoom.RoomImageFileName}">
         </Image>
 
     </Grid>

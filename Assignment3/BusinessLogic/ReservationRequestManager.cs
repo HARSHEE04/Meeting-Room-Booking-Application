@@ -69,25 +69,19 @@ namespace Assignment3.BusinessLogic
                         int requestID = request1.RequestID;
                         _reservationRequests.Add(request1);
                         
+                        break;
+                        
                     }
 
-                    
-           
-                    
+                    break; 
                 }
             }
 
-            
             //if (!roomExists)
             //{
             //    throw new Exception("The room number does not exist");
             //}
         }
-
-
-
-
-
 
     }
 }

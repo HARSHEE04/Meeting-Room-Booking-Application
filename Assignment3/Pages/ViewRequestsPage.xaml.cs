@@ -15,23 +15,40 @@ public partial class ViewRequestsPage : ContentPage
 
     //make a method to get the list from the ReservationRequestsManager
 
-    
+
     public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests  )
     {  
         InitializeComponent();
         _selectedRoom = selectedRoom;
-        var roominfo = requests.ReservationRequests;
-        roominfo.ToString();
-        AllRequestListview.ItemsSource = roominfo;
+        this.BindingContext = new ViewRequestsViewModel(selectedRoom, requests);
+
 
     }
+    public class ViewRequestsViewModel
+    {
+        public string RoomNumber { get; }
 
- 
+        public List<ReservationRequest> ReservationRequests { get; }
+
+        public ViewRequestsViewModel(MeetingRoom selectedRoom, ReservationRequestManager requestManager)
+        {
+            RoomNumber = selectedRoom.RoomNumber;
+            ReservationRequests = requestManager.ReservationRequests;
+        }
+    }
+
 
     private void OnBackToRooms(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PickRoomPage());
     }
 
- 
+
 }
+
+
+
+
+
+      
+   
