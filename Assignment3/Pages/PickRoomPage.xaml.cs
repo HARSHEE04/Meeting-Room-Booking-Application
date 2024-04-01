@@ -7,7 +7,7 @@ namespace Assignment3.Pages;
 public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
 {
     private ReservationRequestManager _requestmanager;
-    private MeetingRoom selectedRoom;
+    private MeetingRoom _selectedRoom;
     public event PropertyChangedEventHandler PropertyChanged;
     public PickRoomPage()
     {
@@ -20,35 +20,34 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
     // Property to hold the selected room
     public MeetingRoom SelectedRoom
     {
-        get { return selectedRoom; }
+        get { return _selectedRoom; }
         set
         {
-            if (selectedRoom != value)
+            if (_selectedRoom != value)
             {
-                selectedRoom = value;
+                _selectedRoom = value;
                 OnPropertyChanged(nameof(SelectedRoom)); // Notify property changed
             }
         }
     }
-
+    
     // OnPropertyChanged method to raise the PropertyChanged event
     protected virtual void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-
     private void OnAddRequest(object sender, EventArgs e)
     {
         try
         {
             //ensure a room is selected
-            if (selectedRoom == null)
+            if (_selectedRoom == null)
             {
                 throw new Exception("Please select a room before adding a request.");
             }
             //use the this keyword for to get info about the specific instance, basically gets the info about the room
-            Navigation.PushAsync(new AddRequestPage(this.selectedRoom, _requestmanager.AddReservationRequest));
+            Navigation.PushAsync(new AddRequestPage(this._selectedRoom, _requestmanager.AddReservationRequest));
         }
         catch (Exception ex)
         {
@@ -61,13 +60,14 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
     private void OnViewRequest(object sender, EventArgs e)
     {
         try
-        {
-            if (selectedRoom == null)
+        {   
+            if (_selectedRoom == null)
             {
                 throw new Exception("Please select a room before viewing requests.");
             }
 
-            Navigation.PushAsync(new ViewRequestsPage(this.selectedRoom, _requestmanager));
+
+            Navigation.PushAsync(new ViewRequestsPage(this._selectedRoom, this._requestmanager));
            
         }
         catch (Exception ex)

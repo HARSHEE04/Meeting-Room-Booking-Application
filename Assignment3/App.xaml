@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Assignment3"
              x:Class="Assignment3.App">
+
+    <!-- The APPLICATION.RESOURCES was used to define the the application wide resources. This was used in this case because as seen in Appendix 1,many   -->
     <Application.Resources>
         <ResourceDictionary>
 
@@ -10,7 +12,7 @@
                 <Setter Property="BackgroundColor" Value="Purple" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="Margin" Value="5" />
-                <!-- Add more setters as needed -->
+            
             </Style>
 
 

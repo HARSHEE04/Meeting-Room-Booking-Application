@@ -1,10 +1,12 @@
 namespace Assignment3.Pages;
 using Assignment3.BusinessLogic;
-
+using System.Collections.ObjectModel;
 
 public partial class ViewRequestsPage : ContentPage
 {
     private MeetingRoom _selectedRoom;
+     private ReservationRequestManager _requestManager;
+    private ObservableCollection<ReservationRequest> _reservationRequestsforViewPage=new ObservableCollection<ReservationRequest>();
 
     //notes to self: 
     /*Steps to show the objects list properly in listview
@@ -20,24 +22,51 @@ public partial class ViewRequestsPage : ContentPage
     {  
         InitializeComponent();
         _selectedRoom = selectedRoom;
-        this.BindingContext = new ViewRequestsViewModel(selectedRoom, requests);
+        _requestManager = requests;
+        this.BindingContext = selectedRoom;
 
+        //popultae the observarble collection for the selectedroom
+        RequestsLoader();
+
+        //Use obserable collection and use the ItemSource to show collection
+        AllRequestListview.ItemsSource = _reservationRequestsforViewPage;
 
     }
-    public class ViewRequestsViewModel
+
+    private void RequestsLoader()
     {
-        public string RoomNumber { get; }
+        _reservationRequestsforViewPage.Clear();
 
-        public List<ReservationRequest> ReservationRequests { get; }
-
-        public ViewRequestsViewModel(MeetingRoom selectedRoom, ReservationRequestManager requestManager)
+        
+        foreach (var request in _requestManager.ReservationRequests)
         {
-            RoomNumber = selectedRoom.RoomNumber;
-            ReservationRequests = requestManager.ReservationRequests;
+            
+            if (request.MeetingRooms.Any(room => room.RoomNumber == _selectedRoom.RoomNumber)) // explain the any keyword
+            {
+                _reservationRequestsforViewPage.Add(request);
+            }
         }
-    }
 
+        
+    }    
 
+    //explain view model and why I did not use it.
+
+    ////load function
+    //public class ViewRequestsViewModel
+    //{
+    //    public string RoomNumber { get; }
+    //    public List<ReservationRequest> ReservationRequests { get; }
+    //    public ReservationRequestManager RequestManager { get; }
+
+    //    public ViewRequestsViewModel(MeetingRoom selectedRoom, ReservationRequestManager requestManager)
+    //    {
+    //        RoomNumber = selectedRoom.RoomNumber;
+    //        ReservationRequests = requestManager.ReservationRequests;
+    //        RequestManager = requestManager;
+    //    }
+    //}
+    //singleton pattern, create a function in rrm check to see if the instance is null, tries to use same instance across the code
     private void OnBackToRooms(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PickRoomPage());

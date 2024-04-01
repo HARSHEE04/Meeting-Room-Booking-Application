@@ -15,13 +15,13 @@ namespace Assignment3.BusinessLogic
     //Has two methods 1) Add meeting room and 2) Add Reservation Request
     public class ReservationRequestManager
     {
-        private List<MeetingRoom> _meetingRooms; // IS THIS ALLOWED?
-        private List<ReservationRequest> _reservationRequests;
+        private readonly List<MeetingRoom> _meetingRooms;
+        private readonly List<ReservationRequest> _reservationRequests;
         public ReservationRequestManager()
         {
-            _meetingRooms=new List<MeetingRoom>();
-            _reservationRequests=new List<ReservationRequest>();
-             _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png"));
+            _meetingRooms = new List<MeetingRoom>();
+            _reservationRequests = new List<ReservationRequest>();
+            _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png"));
             _meetingRooms.Add(new MeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png"));
             _meetingRooms.Add(new MeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png"));
             _meetingRooms.Add(new MeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium.png"));
@@ -73,7 +73,7 @@ namespace Assignment3.BusinessLogic
                         
                     }
 
-                    break; 
+                   
                 }
             }
 
@@ -82,6 +82,8 @@ namespace Assignment3.BusinessLogic
             //    throw new Exception("The room number does not exist");
             //}
         }
+        // Method to add a reservation request
+     
 
     }
 }

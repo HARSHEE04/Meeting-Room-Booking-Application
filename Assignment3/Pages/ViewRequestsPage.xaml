@@ -1,64 +1,43 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Assignment3.Pages.ViewRequestsPage"
-             Grid.Column="0"
-             Grid.ColumnSpan="2"
-             Title="ViewRequestsPage">
+             Title="View Reservation Requests">
     <Shell.TitleView>
         <Grid>
             <Label Text="View Reservation Requests" HorizontalOptions="Center" VerticalOptions="Center" 
                    FontSize="Title"></Label>
         </Grid>
     </Shell.TitleView>
-    
-    <Grid
-        RowDefinitions="*,4*,*">
 
+    <Grid RowDefinitions="Auto, *, Auto">
+        <Label Grid.Row="0" Text="{Binding RoomNumber}"
+               HorizontalOptions="Center" VerticalOptions="Center"/>
 
-        <Label 
-            Grid.Row="0"
-            Text="{Binding RoomNumber}"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-        <ListView
-            Grid.Row="1"
-            ItemsSource="{Binding ReservationRequests}"
-            x:Name="AllRequestListview">
+        <ListView Grid.Row="1"
+                  x:Name="AllRequestListview">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
                             <Label Text="{Binding RequestedBy, StringFormat='Requested by: {0}'}"
-                                   TextColor="Black"
-                                   FontAttributes="Bold"/>
+                                   TextColor="Black" FontAttributes="Bold"/>
                             <Label Text="{Binding Description, StringFormat='Meeting of {0}'}"
-                                    TextColor="Black"
-                                   FontAttributes="Italic"/>
-                          
+                                   TextColor="Black" FontAttributes="Italic"/>
                             <Label Text="{Binding StartDateTime, StringFormat='Scheduled on: {0:MMMM dd, yyyy}'}"
-                                    TextColor="Black"/>
+                                   TextColor="Black"/>
                             <Label Text="{Binding StartDateTime, StringFormat='From: {0:t}'}"
-                                    TextColor="Black"/>
+                                   TextColor="Black"/>
                             <Label Text="{Binding EndDateTime, StringFormat='To: {0:t}'}"
-                                    TextColor="Black"/>
-
+                                   TextColor="Black"/>
                             <Label Text="{Binding Status, StringFormat='Status: {0}'}"
-                                    TextColor="Black"></Label>
-                                   
+                                   TextColor="Black"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-       
 
-        <Button
-           Grid.Row="2" 
-           Text="Back to Rooms"
-           Clicked="OnBackToRooms"
-           VerticalOptions="Center"
-           HorizontalOptions="Center">
-        </Button>
+        <Button Grid.Row="2" Text="Back to Rooms" Clicked="OnBackToRooms"
+                VerticalOptions="Center" HorizontalOptions="Center"/>
     </Grid>
 </ContentPage>

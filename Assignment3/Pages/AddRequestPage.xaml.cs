@@ -16,30 +16,25 @@ public partial class AddRequestPage : ContentPage
 
     }
 
+    //Issue found with debugging, is that the viewrequests page is not getting the instance of the request which is being made. Getting that specific instance would allow it to access the list
+
     private void OnAddRequest(object sender, EventArgs e)
     {
+        
 
-        try
-        {
-            DateTime startDateTime = DatePicker.Date + StartTimePicker.Time;
-            DateTime endDateTime = DatePicker.Date + EndTimePicker.Time;
-            int participantCount;
-            if (!int.TryParse(ParticipantCount.Text, out participantCount))
-            {
-                throw new ArgumentException("Participant count must be a valid integer.");
-            }
+        DateTime startDateTime= DatePicker.Date + StartTimePicker.Time;
 
-            _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, participantCount, _selectedRoom.RoomNumber);
+        DateTime endDateTime= DatePicker.Date + EndTimePicker.Time;
 
-            DisplayAlert("Success", "Your request has been added", "Ok");
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("Error", ex.Message, "Ok");
-        }
-    
+        ReservationRequest newRequest = new ReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text));
+        // Store the newRequest object in the static class
+      //  GlobalVariables.NewRequest = newRequest;
+        _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
 
-}
+        DisplayAlert("Success", "Your request has been added", "Ok");
+
+    }
+
 
     private void OnBackToRooms(object sender, EventArgs e)
     {
@@ -47,5 +42,3 @@ public partial class AddRequestPage : ContentPage
 
     }
 }
-
-
