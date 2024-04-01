@@ -27,14 +27,10 @@ public partial class AddRequestPage : ContentPage
             DateTime endDateTime = DatePicker.Date + EndTimePicker.Time;
 
             ReservationRequest newRequest = new ReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text));
-            // Store the newRequest object in the static class
-            //  GlobalVariables.NewRequest = newRequest;
+           
             _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
 
             DisplayAlert("Success", "Your request has been added", "Ok");
-
-            GlobalVariables.NewRequest = newRequest;
-
 
         }
         catch (Exception ex)

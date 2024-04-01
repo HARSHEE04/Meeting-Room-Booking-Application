@@ -52,23 +52,6 @@ public partial class ViewRequestsPage : ContentPage
         }
     }
 
-    //explain view model and why I did not use it.
-
-    ////load function
-    //public class ViewRequestsViewModel
-    //{
-    //    public string RoomNumber { get; }
-    //    public List<ReservationRequest> ReservationRequests { get; }
-    //    public ReservationRequestManager RequestManager { get; }
-
-    //    public ViewRequestsViewModel(MeetingRoom selectedRoom, ReservationRequestManager requestManager)
-    //    {
-    //        RoomNumber = selectedRoom.RoomNumber;
-    //        ReservationRequests = requestManager.ReservationRequests;
-    //        RequestManager = requestManager;
-    //    }
-    //}
-
     private void OnBackToRooms(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PickRoomPage());
