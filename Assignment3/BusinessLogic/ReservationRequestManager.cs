@@ -27,31 +27,44 @@ namespace Assignment3.BusinessLogic
         private static ReservationRequestManager instance;
 
 
-
-        public static ReservationRequestManager Instance
+        /// <summary>
+        /// This method uses the principle of the Singleton Design Pattern. With this pattern,
+        /// a class only has one instance in the program (ours is created in the pickroompage)  which can be accessed in other classes.
+        /// The reason why I needed this is because my ReservationRequestManager is only created in my PickRoomPage and I should be taking info of that one instance that was 
+        /// created to other pages such as the ViewRequests page so I can use the properties of that instance such as the ReservationRequests which is the list with all of my requests.
+        /// The pattern is perfect for that because it provides a single point of access to this particular instance (in our case the _requestmanager in PickRoomPage) so this instance is easy to maintain and use
+        /// The references for this pattern is here: https://www.c-sharpcorner.com/UploadFile/8911c4/singleton-design-pattern-in-C-Sharp/
+        /// </summary>
+        public static ReservationRequestManager Instance //declares a static property named Instance of the type ReservationRequestManager.Static ensures it belows to class rather than instance allowing us to use that single instance concept.
+            
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new ReservationRequestManager();
+                    instance = new ReservationRequestManager();// checks to see if the instance is null, if it is, new one is created
                 }
                 return instance;
             }
         }
 
+        /// <summary>
+        /// Below was the public constructor I has made for this class before, but since I implemented the Singleton Design Pattern, I took this out because these constructors create new instances of the class and can be 
+        /// accessed outside the class which would mean multiple insstances of the class could be made which violates the rule that only one instance of this class can be made.
+        /// References: https://csharpindepth.com/articles/Singleton
+        /// </summary>
         //public ReservationRequestManager()
         //{
 
-            //instanciating of the meeting room and reservtion request list to comply with composition relationship requirements.
+        //instanciating of the meeting room and reservtion request list to comply with composition relationship requirements.
 
 
 
-            //four harded coded instances of meeting room added to list of meeting rooms, will be used to populate the pickroompage
-            //_meetingrooms.add(new meetingroom("a102", 20, roomlayouttype.hollowsquare, "hollowsquare.png"));
-            //_meetingrooms.add(new meetingroom("b013", 20, roomlayouttype.ushape, "ushape.png"));
-            //_meetingrooms.add(new meetingroom("c202", 40, roomlayouttype.classroom, "classroom.png"));
-            //_meetingrooms.add(new meetingroom("c105", 200, roomlayouttype.auditorium, "auditorium.png"));
+        //four harded coded instances of meeting room added to list of meeting rooms, will be used to populate the pickroompage
+        //_meetingrooms.add(new meetingroom("a102", 20, roomlayouttype.hollowsquare, "hollowsquare.png"));
+        //_meetingrooms.add(new meetingroom("b013", 20, roomlayouttype.ushape, "ushape.png"));
+        //_meetingrooms.add(new meetingroom("c202", 40, roomlayouttype.classroom, "classroom.png"));
+        //_meetingrooms.add(new meetingroom("c105", 200, roomlayouttype.auditorium, "auditorium.png"));
 
         //    //tried hard-coding the requests but was not working as intended
         //    //DateTime startDateTime = DateTime.Now;

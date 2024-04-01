@@ -13,7 +13,7 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
 /// This interface has a OnPropertyChanged method which is explained below
 
 {
-    private ReservationRequestManager _requestmanager=ReservationRequestManager.Instance;
+    private ReservationRequestManager _requestmanager=ReservationRequestManager.Instance; // use that specific property which holds that one singular instance of ReservationRequestManager.
     private MeetingRoom _selectedRoom;
     public event PropertyChangedEventHandler PropertyChanged;// This declares an event named PropertyChanged and is used to implement the INotifyPropertyChnaged interface.
     //This is an event of the type PropertyChangedEventHandler which is a type of event. This is a delegate type which
@@ -30,10 +30,7 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
 
         InitializeComponent();
         //_requestmanager = new ReservationRequestManager();// composition relationship in compliance with the provided UML in the assignment 
-        AddMeetingRoomsToPage();
-
-        //This allows us to use data binding because now the data bindings will be done againts the properties of the current instance. 
-        //References: https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/basic-bindings?view=net-maui-8.0
+        AddMeetingRoomsToPage(); 
 
     }
 
@@ -53,10 +50,13 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
             }
         }
     }
-
+    /// <summary>
+    /// This method adds hard-coded meeting room instances to the Meeting Rooms property which has the list of all the meeting rooms if the count is less than 4 which is when new meetings rooms are created.
+    /// It also sets the binding context of the Listview to the current instance of the class
+    /// </summary>
     public void AddMeetingRoomsToPage()
     {
-        if (_requestmanager.MeetingRooms.Count < 4) 
+        if (_requestmanager.MeetingRooms.Count < 4) //checks to ensure this is only done when the meeting rooms are less than 4 otherwise we are trying to recreate already existing rooms leading to errors.
         {
             _requestmanager.AddMeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png");
             _requestmanager.AddMeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png");
@@ -66,7 +66,8 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
         //hard coded values of Meeting Rooms
        
         RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms; //populates the listview with the Meeting Rooms present in the list
-        BindingContext = this; // this line sets the binding context of an UI element/page to the current isnatcnes of a class. This is used
+        BindingContext = this; // this line sets the binding context of an UI element/page to the current isnatcnes of a class.  //This allows us to use data binding because now the data bindings will be done againts the properties of the current instance. 
+        //References: https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/basic-bindings?view=net-maui-8.0
     }
 
     // OnPropertyChanged method to raise the PropertyChanged event. Takes the property that has changed( In our case SelectedRoom as seen above). It takes this paramter and ivokes the PropertyChanged event passing this as the sender.

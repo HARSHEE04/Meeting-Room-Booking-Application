@@ -5,6 +5,9 @@
              x:Class="Assignment3.App">
 
     <!-- The APPLICATION.RESOURCES was used to define the the application wide resources. This was used in this case because as seen in Appendix 1,many   -->
+    <!--Help with app.resources: https://learn.microsoft.com/en-us/dotnet/api/system.windows.application.resources?view=windowsdesktop-8.0,
+    https://learn.microsoft.com/en-us/windows/apps/design/style/xaml-resource-dictionary-->
+    
     <Application.Resources>
         <ResourceDictionary>
 
@@ -32,16 +35,6 @@
             <!-- Style for Editor -->
             <Style TargetType="Editor">
                 <Setter Property="Margin" Value="0,0,15,0" />
-
-            </Style>
-
-            <!-- Style for DatePicker -->
-            <Style TargetType="DatePicker">
-
-            </Style>
-
-            <!-- Style for TimePicker -->
-            <Style TargetType="TimePicker">
 
             </Style>
 

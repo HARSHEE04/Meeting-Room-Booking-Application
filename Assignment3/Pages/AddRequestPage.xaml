@@ -4,7 +4,7 @@
              x:Class="Assignment3.Pages.AddRequestPage"
              Title="AddRequestPage"
              Grid.ColumnSpan="2">
-
+    <!--for help with Shell.TitleView: https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/shell/pages?view=net-maui-8.0,https://stackoverflow.com/questions/75257860/net-maui-customize-shell-titleview-and-bind-to-current-page-title -->
     <Shell.TitleView>
         <Grid>
             <Label Text="Add Reservation Request " HorizontalOptions="Center"  VerticalOptions="Center"
@@ -67,7 +67,7 @@
         Text="Start Time"
         VerticalOptions="Center">
         </Label>
-
+        <!--https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/timepicker?view=net-maui-8.0&tabs=windows-->
         <TimePicker
             Grid.Row="9"  Grid.Column="1"
             x:Name="StartTimePicker">
