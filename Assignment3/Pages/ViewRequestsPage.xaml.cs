@@ -39,6 +39,7 @@ public partial class ViewRequestsPage : ContentPage
     {
         _reservationRequestsforViewPage.Clear();
 
+
         foreach (var request in _requestManager.ReservationRequests)
         {
             foreach (var room in request.MeetingRooms)

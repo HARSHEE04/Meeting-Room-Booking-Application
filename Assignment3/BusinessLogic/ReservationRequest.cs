@@ -83,7 +83,8 @@ namespace Assignment3.BusinessLogic
             get { return _startDateTime; }
             set
             {
-                if (value < DateTime.Today) //validation to ensure the startdate and time are greater than today since it must be a future date and time.
+                if (value < DateTime.Today) //validation to ensure the startdate and time are greater than today since it must be a future date and time. This resource was used to confirm this: https://learn.microsoft.com/en-us/dotnet/api/system.datetime.today?view=net-8.0
+
                 {
                     throw new Exception("The day must be a future date and Time");
                 }
