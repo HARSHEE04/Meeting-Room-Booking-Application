@@ -156,7 +156,8 @@ namespace Assignment3.BusinessLogic
         /// <param name="participants">Variable holding the number of expected people who will be present in the meeting room during request.</param>
         public ReservationRequest(string requestedBy, string description, DateTime startDateTime, DateTime endDateTime, int participants) //need to see if we need it for bonus, call setter 
         {
-            RequestedBy=requestedBy;
+            _meetingRooms = null;
+            RequestedBy =requestedBy;
             Description=description;
             StartDateTime=startDateTime;
             EndDateTime=endDateTime;

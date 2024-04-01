@@ -53,6 +53,15 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
         }
     }
 
+    public void AddMeetingRoomsToPage()
+    {
+        //hard coded values of Meeting Rooms
+        _requestmanager.AddMeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png");
+        _requestmanager.AddMeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png");
+        _requestmanager.AddMeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png");
+        _requestmanager.AddMeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium.png");
+    }
+
     // OnPropertyChanged method to raise the PropertyChanged event. Takes the property that has changed( In our case SelectedRoom as seen above). It takes this paramter and ivokes the PropertyChanged event passing this as the sender.
     //Also passed PropertyChangedEventArgs which is an object and this has the property name.
     //This method allows us notify UI elements that the property has changed, chaging the display accoridnly.
