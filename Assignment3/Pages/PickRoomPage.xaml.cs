@@ -46,6 +46,7 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
             {
                 throw new Exception("Please select a room before adding a request.");
             }
+            
             //use the this keyword for to get info about the specific instance, basically gets the info about the room
             Navigation.PushAsync(new AddRequestPage(this._selectedRoom, _requestmanager.AddReservationRequest));
         }
@@ -65,9 +66,9 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged
             {
                 throw new Exception("Please select a room before viewing requests.");
             }
+            
 
-
-            Navigation.PushAsync(new ViewRequestsPage(this._selectedRoom, this._requestmanager));
+            Navigation.PushAsync(new ViewRequestsPage(this._selectedRoom, _requestmanager));
            
         }
         catch (Exception ex)

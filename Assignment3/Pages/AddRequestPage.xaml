@@ -7,10 +7,11 @@
 
     <Shell.TitleView>
         <Grid>
-            <Label Text="Add Reservation Request " HorizontalOptions="Center" VerticalOptions="Center"
+            <Label Text="Add Reservation Request " HorizontalOptions="Center"  VerticalOptions="Center"
                  FontSize="Title"></Label>
         </Grid>
     </Shell.TitleView>
+ 
 
     <Grid
         RowDefinitions="*,*,*,*,*,3*,*,*,*,*,*,*,2*,*"

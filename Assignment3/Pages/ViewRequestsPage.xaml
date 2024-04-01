@@ -10,11 +10,13 @@
     </Shell.TitleView>
 
     <Grid RowDefinitions="Auto, *, Auto">
-        <Label Grid.Row="0" Text="{Binding RoomNumber}"
+        <Label Grid.Row="0" 
+               x:Name="SelectedRoomNumber"
                HorizontalOptions="Center" VerticalOptions="Center"/>
 
         <ListView Grid.Row="1"
-                  x:Name="AllRequestListview">
+          ItemsSource="{Binding _reservationRequestsforViewPage}"
+          x:Name="AllRequestListview">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

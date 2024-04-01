@@ -18,12 +18,14 @@ public partial class ViewRequestsPage : ContentPage
     //make a method to get the list from the ReservationRequestsManager
 
 
-    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests  )
+    public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests)
     {  
         InitializeComponent();
         _selectedRoom = selectedRoom;
         _requestManager = requests;
-        this.BindingContext = selectedRoom;
+        BindingContext = this;
+        SelectedRoomNumber.Text=$"The Selected Room Number is: {_selectedRoom.RoomNumber}";
+
 
         //popultae the observarble collection for the selectedroom
         RequestsLoader();
@@ -37,18 +39,18 @@ public partial class ViewRequestsPage : ContentPage
     {
         _reservationRequestsforViewPage.Clear();
 
-        
         foreach (var request in _requestManager.ReservationRequests)
         {
-            
-            if (request.MeetingRooms.Any(room => room.RoomNumber == _selectedRoom.RoomNumber)) // explain the any keyword
+            foreach (var room in request.MeetingRooms)
             {
-                _reservationRequestsforViewPage.Add(request);
+                if (room.RoomNumber == _selectedRoom.RoomNumber)
+                {
+                    _reservationRequestsforViewPage.Add(request);
+                    break; // Exit the inner loop once a matching room is found
+                }
             }
         }
-
-        
-    }    
+    }
 
     //explain view model and why I did not use it.
 
@@ -66,7 +68,7 @@ public partial class ViewRequestsPage : ContentPage
     //        RequestManager = requestManager;
     //    }
     //}
-    //singleton pattern, create a function in rrm check to see if the instance is null, tries to use same instance across the code
+
     private void OnBackToRooms(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PickRoomPage());

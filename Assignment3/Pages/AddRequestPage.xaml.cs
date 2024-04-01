@@ -20,18 +20,29 @@ public partial class AddRequestPage : ContentPage
 
     private void OnAddRequest(object sender, EventArgs e)
     {
-        
+        try
+        {
+            DateTime startDateTime = DatePicker.Date + StartTimePicker.Time;
 
-        DateTime startDateTime= DatePicker.Date + StartTimePicker.Time;
+            DateTime endDateTime = DatePicker.Date + EndTimePicker.Time;
 
-        DateTime endDateTime= DatePicker.Date + EndTimePicker.Time;
+            ReservationRequest newRequest = new ReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text));
+            // Store the newRequest object in the static class
+            //  GlobalVariables.NewRequest = newRequest;
+            _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
 
-        ReservationRequest newRequest = new ReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text));
-        // Store the newRequest object in the static class
-      //  GlobalVariables.NewRequest = newRequest;
-        _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
+            DisplayAlert("Success", "Your request has been added", "Ok");
 
-        DisplayAlert("Success", "Your request has been added", "Ok");
+            GlobalVariables.NewRequest = newRequest;
+
+
+        }
+        catch (Exception ex)
+        {
+            // Handle other unexpected errors
+            DisplayAlert("Error", ex.Message, "Ok");
+
+        }
 
     }
 
@@ -41,4 +52,6 @@ public partial class AddRequestPage : ContentPage
         Navigation.PushAsync(new PickRoomPage());
 
     }
+
+   
 }
