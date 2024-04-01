@@ -13,7 +13,7 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
 /// This interface has a OnPropertyChanged method which is explained below
 
 {
-    private ReservationRequestManager _requestmanager;
+    private ReservationRequestManager _requestmanager=ReservationRequestManager.Instance;
     private MeetingRoom _selectedRoom;
     public event PropertyChangedEventHandler PropertyChanged;// This declares an event named PropertyChanged and is used to implement the INotifyPropertyChnaged interface.
     //This is an event of the type PropertyChangedEventHandler which is a type of event. This is a delegate type which
@@ -27,10 +27,11 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
     /// </summary>
     public PickRoomPage()
     {
+
         InitializeComponent();
-        _requestmanager = new ReservationRequestManager();// composition relationship in compliance with the provided UML in the assignment 
-        RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms; //populates the listview with the Meeting Rooms present in the list
-         BindingContext = this; // this line sets the binding context of an UI element/page to the current isnatcnes of a class. This is used
+        //_requestmanager = new ReservationRequestManager();// composition relationship in compliance with the provided UML in the assignment 
+        AddMeetingRoomsToPage();
+
         //This allows us to use data binding because now the data bindings will be done againts the properties of the current instance. 
         //References: https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/data-binding/basic-bindings?view=net-maui-8.0
 
@@ -55,11 +56,17 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
 
     public void AddMeetingRoomsToPage()
     {
+        if (_requestmanager.MeetingRooms.Count < 4) 
+        {
+            _requestmanager.AddMeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png");
+            _requestmanager.AddMeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png");
+            _requestmanager.AddMeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png");
+            _requestmanager.AddMeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium.png");
+        }
         //hard coded values of Meeting Rooms
-        _requestmanager.AddMeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png");
-        _requestmanager.AddMeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png");
-        _requestmanager.AddMeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png");
-        _requestmanager.AddMeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium.png");
+       
+        RoomTypesListview.ItemsSource = _requestmanager.MeetingRooms; //populates the listview with the Meeting Rooms present in the list
+        BindingContext = this; // this line sets the binding context of an UI element/page to the current isnatcnes of a class. This is used
     }
 
     // OnPropertyChanged method to raise the PropertyChanged event. Takes the property that has changed( In our case SelectedRoom as seen above). It takes this paramter and ivokes the PropertyChanged event passing this as the sender.
@@ -67,7 +74,7 @@ public partial class PickRoomPage : ContentPage, INotifyPropertyChanged// this p
     //This method allows us notify UI elements that the property has changed, chaging the display accoridnly.
     //Made this prtected virtual because was unsure if I needed to overide in derived classes but I did not end up doing that.
     //In our case, it updates the real room image as the different rooms are selected. References are the same as before. Also used this for implementation help: https://stackoverflow.com/questions/12034840/handling-onpropertychanged
-    
+
     /// <summary>
     /// Explaination is above
     /// </summary>

@@ -18,31 +18,58 @@ namespace Assignment3.BusinessLogic
     /// This class manages the collection of Meeting Rooms and Reservation Requests. This is why it is in a whole- part relationship with both the meeting room and the reservationrequests class. This is the whole while
     /// The other two are the parts. For this reason, we have a list of meetings rooms and a list of reservation requests in the filed vairbales which is initlized using the new keyword in the constructor of this classs. 
     /// </summary>
-    public class ReservationRequestManager
+    public class ReservationRequestManager 
+
     {
         //field varibale to comply with composition relationship. 
-        private List<MeetingRoom> _meetingRooms;
-        private List<ReservationRequest> _reservationRequests;
-        public ReservationRequestManager()
+        private List<MeetingRoom> _meetingRooms= new List<MeetingRoom>();
+        private List<ReservationRequest> _reservationRequests = new List<ReservationRequest>();
+        private static ReservationRequestManager instance;
+
+
+
+        public static ReservationRequestManager Instance
         {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ReservationRequestManager();
+                }
+                return instance;
+            }
+        }
+
+        //public ReservationRequestManager()
+        //{
 
             //instanciating of the meeting room and reservtion request list to comply with composition relationship requirements.
-            _meetingRooms = new List<MeetingRoom>();
-            _reservationRequests = new List<ReservationRequest>();
+
+
+
             //four harded coded instances of meeting room added to list of meeting rooms, will be used to populate the pickroompage
-            _meetingRooms.Add(new MeetingRoom("A102", 20, RoomLayoutType.hollowsquare, "hollowsquare.png"));
-            _meetingRooms.Add(new MeetingRoom("B013", 20, RoomLayoutType.ushape, "ushape.png"));
-            _meetingRooms.Add(new MeetingRoom("C202", 40, RoomLayoutType.classroom, "classroom.png"));
-            _meetingRooms.Add(new MeetingRoom("C105", 200, RoomLayoutType.auditorium, "auditorium.png"));
-        }
+            //_meetingrooms.add(new meetingroom("a102", 20, roomlayouttype.hollowsquare, "hollowsquare.png"));
+            //_meetingrooms.add(new meetingroom("b013", 20, roomlayouttype.ushape, "ushape.png"));
+            //_meetingrooms.add(new meetingroom("c202", 40, roomlayouttype.classroom, "classroom.png"));
+            //_meetingrooms.add(new meetingroom("c105", 200, roomlayouttype.auditorium, "auditorium.png"));
+
+        //    //tried hard-coding the requests but was not working as intended
+        //    //DateTime startDateTime = DateTime.Now;
+        //    ////Console.WriteLine(startDateTime.ToString());
+
+        //    //DateTime endDateTime = DateTime.Now;
+        //    //_reservationRequests.Add(new ReservationRequest("John Doe", "Description, academic council", startDateTime, endDateTime, 25));
+        //}
 
         #region Properties
         //two properties made that return the new meeting room and reservation request list in this class. Helpful because it would allow objects of this class to have access to the list of meeting rooms and _reservationrequests
-        public List<MeetingRoom> MeetingRooms { get { return _meetingRooms; } }
-        public List<ReservationRequest> ReservationRequests { get { return _reservationRequests; } }
+        public List<MeetingRoom> MeetingRooms { get { return _meetingRooms; } } //change the name, try refactoring
+        public List<ReservationRequest> ReservationRequests { get { return _reservationRequests; } } //change name, try refactoring
 
+       
         #endregion
 
+        
         #region Methods
         /// <summary>
         /// This method accepts the data which is required to create an instance of a Meeting Room and it added it to the collection of meetings rooms.

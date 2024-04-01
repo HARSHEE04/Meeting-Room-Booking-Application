@@ -27,43 +27,22 @@ public partial class ViewRequestsPage : ContentPage
     /// <param name="requests">paramter of type ReservationRequestManager.</param>
     public ViewRequestsPage(MeetingRoom selectedRoom, ReservationRequestManager requests)
     {  
-        InitializeComponent();
+        this.InitializeComponent();
         _selectedRoom = selectedRoom;
         _requestManager = requests;
         BindingContext = this;  //sets the binding context to the data of this specific instance.
         SelectedRoomNumber.Text=$"The Selected Room Number is: {_selectedRoom.RoomNumber}";  //just manually taking info about selected room and showing it on the UI
+        AllRequestListview.ItemsSource = requests.ReservationRequests;
 
-
-        //allows us to load all the requests so the _reservationRequestsforViewPage is populated
-        RequestsLoader();
-
-        //shows that obserable collection on the listview
         AllRequestListview.ItemsSource = _reservationRequestsforViewPage;
+        //allows us to load all the requests so the _reservationRequestsforViewPage is populated
+        //RequestsLoaderandPresenter();
+
+      
 
     }
 
-    /// <summary>
-    /// This method filters and populates the _reservationRequestsforViewPag obserable collection with the reservation requests which are accosiated 
-    /// with the selected room with should allow users to see all the requests to the relevent room.
-    /// </summary>
-    private void RequestsLoader()
-    {
-        _reservationRequestsforViewPage.Clear(); //this line clears the collection using the Clear() method which removes all the items from the collection so we can populate it with new items.
 
-        //loops through requests stored in _requestManager.ReservationRequests from the ReservationRequestManager class. The loops through the meeting rooms with each reservation request. Thenit checks to see if the 
-        //two room numbers match, meaning a request and room number match is found, it added it to the collection and breaks from the loop once the match is found.
-        foreach (var request in _requestManager.ReservationRequests)
-        {
-            foreach (var room in request.MeetingRooms)
-            {
-                if (room.RoomNumber == _selectedRoom.RoomNumber)
-                {
-                    _reservationRequestsforViewPage.Add(request);
-                    break; 
-                }
-            }
-        }
-    }
 
     //just takes users back to the pick room page
     private void OnBackToRooms(object sender, EventArgs e)

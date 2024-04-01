@@ -43,6 +43,8 @@ public partial class AddRequestPage : ContentPage
             DateTime startDateTime = DatePicker.Date + StartTimePicker.Time;
 
             DateTime endDateTime = DatePicker.Date + EndTimePicker.Time;
+
+          
             //Object of ReservationRequest made using user data
             ReservationRequest newRequest = new ReservationRequest(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text));//create instance of ReservationRequest
                                                                                                                                                                      //takes the _addReservationRequest action whihc was defined in field variable and ivokes it using IVOKE method which is provided by delegate types like Action.
@@ -52,6 +54,7 @@ public partial class AddRequestPage : ContentPage
             ///
             _addReservationRequest?.Invoke(Requestedby.Text, Description.Text, startDateTime, endDateTime, int.Parse(ParticipantCount.Text), _selectedRoom.RoomNumber);
 
+            
             DisplayAlert("Success", "Your request has been added", "Ok");
 
         }
